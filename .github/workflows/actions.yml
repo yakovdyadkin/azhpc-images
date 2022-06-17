@@ -15,7 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: Azure/pipelines@v1.2
+      - name: Trigger ADO Pipeline
+        uses: Azure/pipelines@v1.2
         with:
           azure-devops-project-url: 'https://dev.azure.com/hpc-platform-team/hpc-image-val'
           azure-pipeline-name: 'hpc-image-val'
