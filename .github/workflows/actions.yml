@@ -1,11 +1,10 @@
-name: CI
+name: Trigger Azure Pipelines
 
 on:
-  pull_request:
-    branches: [ "master" ]
+  # pull_request:
+  #   branches: [ "master" ]
 
   workflow_dispatch:
-    branches: ["actions"]
 
 # pr:
 #   branches:
