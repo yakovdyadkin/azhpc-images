@@ -23,8 +23,6 @@ jobs:
           #azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json
 
 
-# # This is a basic workflow to help you get started with Actions
-
 # name: CI
 
 # # Controls when the workflow will run
