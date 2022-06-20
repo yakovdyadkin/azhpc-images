@@ -6,11 +6,6 @@ on:
 
   workflow_dispatch:
 
-# pr:
-#   branches:
-#     include:
-#     - master
-
 jobs:
   build:
     environment: ADO
