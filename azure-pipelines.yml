@@ -5,6 +5,9 @@
 
 trigger: none
 
+variables:
+  group: PAT
+
 pool:
   vmImage: ubuntu-latest
 
@@ -15,3 +18,7 @@ steps:
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
   displayName: Queue a Build 
+
+- bash: |
+    curl -v --request POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0" -H "Authorization: Basic $(PAT)" -H "Content-Type: application/json" --data-raw "{"definition": {"id": 1}}"
+  displayName: Queue a Build Authorized with PAT
