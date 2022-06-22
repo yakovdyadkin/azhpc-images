@@ -11,5 +11,5 @@ pool:
 steps:
 
 - bash: |
-    curl -v "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?definitionId=1"
+    curl -v -H "Authorization: Bearer $(System.AccessToken)" "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?definitionId=1"
   displayName: Get Most Recent Build 
