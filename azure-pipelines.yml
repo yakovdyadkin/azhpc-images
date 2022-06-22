@@ -11,7 +11,7 @@ pool:
 steps:
 
 - bash: |
-    curl --request POST 'https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0' -H 'Authorization: Bearer $SYSTEM_ACCESSTOKEN' -H 'Content-Type: application/json' --data-raw '{"definition": {"id": 1}}'
+    curl -v --request POST 'https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0' -H 'Authorization: Bearer $SYSTEM_ACCESSTOKEN' -H 'Content-Type: application/json' --data-raw '{"definition": {"id": 1}}'
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
   displayName: Queue a Build 
