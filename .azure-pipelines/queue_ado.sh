@@ -1,8 +1,12 @@
 #!/bin/bash
 
-
+####
+# @Brief        : GET ADO build info
+# @Param        : ADO Auth token, build url
+# @RetVal       : build json
+####
 get_builds_res () {
-    builds_json=$(curl -s -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" $build_url)
+    builds_json=$(curl -s -H "Authorization: Bearer $SYSTEM_ACCESSTOKEN" $build_url)
     echo $builds_json
 }
 
