@@ -26,7 +26,8 @@ steps:
     #arguments: # Optional
     #workingDirectory: # Optional
     failOnStderr: true
-    #bashEnvValue: # Optional
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
   displayName: Queue AzDo build and Monitor Status 
 
 
