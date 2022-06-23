@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pr:
+- main
+
+# variables:
+# - group: PAT
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: |
+    jq -V
+  displayName: Check if jq is installed
+
+- task: Bash@3
+  inputs:
+    targetType: 'filePath'
+    filePath: './queue_ado.sh'
+    #arguments: # Optional
+    #workingDirectory: # Optional
+    failOnStderr: true
+    #bashEnvValue: # Optional
+  displayName: Queue AzDo build and Monitor Status 
+
+
+# - bash: |
+#     curl --request POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0" -H "Authorization: Bearer $SYSTEM_ACCESSTOKEN" -H "Content-Type: application/json" --data-raw "{"definition": {"id": 1}}"
+#   env:
+#     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+#   displayName: Queue a Build 
+
+# - bash: |
+#     echo $(PAT)
+#     curl -v --request POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0" -H "Authorization: Basic $(PAT)" -H "Content-Type: application/json" --data-raw "{"definition": {"id": 1}}"
+#   displayName: Queue a Build Authorized with PAT
