@@ -41,7 +41,7 @@ done
 build_res=$(get_builds_res | jq -r ".result")
 echo "Build result: ${build_res}"
 
-if [ "{$build_res}" != "succeeded" ]
+if [ "${build_res}" != "succeeded" ]
 then
     exit 1
 fi
