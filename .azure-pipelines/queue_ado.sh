@@ -19,23 +19,25 @@ post_build_res=$(curl -X POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/
 
 build_url=$(echo $post_build_res | jq -r "._links.self.href")
 #get_builds_res=$(curl -s -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" $build_url)
+echo "build url: $build_url"
 
 build_status=$(get_builds_res | jq -r ".status")
+echo "build status: $build_status"
 
-while [ "$build_status" != "completed" ]
+while [ "${build_status}" != "completed" ]
 do
     #get_builds_res=$(curl -s -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" $build_url)
     build_status=$(get_builds_res | jq -r ".status")
   
-    echo "Build status: $build_status"
+    echo "Build status: ${build_status}"
     sleep 5
 done
 
 #get_builds_res=$(curl -s -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" get_build_url)
 build_res=$(get_builds_res | jq -r ".result")
-echo "Build result: $build_res"
+echo "Build result: ${build_res}"
 
-if [ "$build_res" != "succeeded" ]
+if [ "{$build_res}" != "succeeded" ]
 then
     exit 1
 fi
