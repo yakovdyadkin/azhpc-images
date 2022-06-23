@@ -22,7 +22,7 @@ build_url=$(echo $post_build_res | jq -r "._links.self.href")
 
 build_status=$(get_builds_res | jq -r ".status")
 
-while [ $build_status != "completed" ]
+while [ "$build_status" != "completed" ]
 do
     #get_builds_res=$(curl -s -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" $build_url)
     build_status=$(get_builds_res | jq -r ".status")
@@ -35,7 +35,7 @@ done
 build_res=$(get_builds_res | jq -r ".result")
 echo "Build result: $build_res"
 
-if [ $build_res != "succeeded" ]
+if [ "$build_res" != "succeeded" ]
 then
     exit 1
 fi
