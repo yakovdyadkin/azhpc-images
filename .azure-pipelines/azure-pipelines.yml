@@ -17,14 +17,13 @@ pool:
 steps:
 - bash: |
     jq -V
+    echo $(System.PullRequest.PullRequestId)
   displayName: Check if jq is installed
 
 - task: Bash@3
   inputs:
     targetType: 'filePath'
     filePath: './.azure-pipelines/queue_ado.sh'
-    #arguments: # Optional
-    #workingDirectory: # Optional
     failOnStderr: true
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
