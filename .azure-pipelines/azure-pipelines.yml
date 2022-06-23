@@ -27,6 +27,7 @@ steps:
     failOnStderr: true
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    PR_NUM: $(System.PullRequest.PullRequestNumber)
   displayName: Queue AzDo build and Monitor Status 
 
 
