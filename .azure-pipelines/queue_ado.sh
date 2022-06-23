@@ -10,6 +10,7 @@ get_builds_res () {
     echo $builds_json
 }
 
+echo $SYSTEM_ACCESSTOKEN
 # Queue a build
 post_build_res=$(curl -X POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0" \
 -H "Authorization: Basic $SYSTEM_ACCESSTOKEN" -H "Content-Type: application/json" \
