@@ -16,7 +16,7 @@ pool:
 
 steps:
 - bash: |
-    echo $(System.PullRequest.PullRequestId)
+    echo $(System.PullRequest.PullRequestNumber)
     jq -V
   displayName: Check if jq is installed
 
