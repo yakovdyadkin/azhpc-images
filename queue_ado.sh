@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ####
 # @Brief        : GET ADO build info
 # @Param        : ADO Auth token, build url
