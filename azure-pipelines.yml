@@ -15,7 +15,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'filePath'
-    filePath: './.azure-pipelines/queue_ado.sh'
+    filePath: './queue_ado.sh'
     failOnStderr: true
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
