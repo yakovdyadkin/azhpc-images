@@ -3,9 +3,6 @@ trigger: none
 pr:
 - master
 
-# variables:
-# - group: PAT
-
 pool:
   vmImage: ubuntu-latest
 
