@@ -30,6 +30,7 @@ do
     sleep 5
 done
 
+# Get build result
 build_res=$(get_builds_res | jq -r ".result")
 echo "Build result: ${build_res}"
 
