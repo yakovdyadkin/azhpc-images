@@ -1,0 +1,23 @@
+trigger: none
+
+pr:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: |
+    echo $(System.PullRequest.PullRequestNumber)
+    jq -V
+  displayName: Check if jq is installed
+
+- task: Bash@3
+  inputs:
+    targetType: 'filePath'
+    filePath: './queue_ado.sh'
+    failOnStderr: true
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    PR_NUM: $(System.PullRequest.PullRequestNumber)
+  displayName: Queue AzDo build and Monitor Status
