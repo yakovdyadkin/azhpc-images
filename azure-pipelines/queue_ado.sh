@@ -13,9 +13,9 @@ get_builds_res () {
 
 
 # Queue a build
-post_build_res=$(curl -s -X POST "https://dev.azure.com/hpc-platform-team/hpc-image-val/_apis/build/builds?api-version=6.0" \
+post_build_res=$(curl -s -X POST "https://dev.azure.com/yakovdyadkin/webhook/_apis/build/builds?api-version=6.0" \
 -H "Authorization: Bearer $SYSTEM_ACCESSTOKEN" -H "Content-Type: application/json" \
---data-raw "{\"definition\": {\"id\": 3}, \"sourceBranch\": \"github_pr\", \"parameters\": \"{\\\"PR_NUM\\\": \\\"$PR_NUM\\\"}\"}")
+--data-raw "{\"definition\": {\"id\": 1}, \"sourceBranch\": \"pr_trigger\", \"parameters\": \"{\\\"PR_NUM\\\": \\\"$PR_NUM\\\"}\"}")
 
 echo "Queued build!"
 
@@ -31,7 +31,7 @@ do
     build_status=$(get_builds_res | jq -r ".status")
   
     echo "Build status: ${build_status}"
-    sleep 300
+    sleep 5
 done
 
 build_res=$(get_builds_res | jq -r ".result")
