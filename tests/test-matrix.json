@@ -1,4 +1,8 @@
 {
+    "cbl-mariner-2": {
+        "components": ["check_impi_2021", "check_cuda", "check_nccl", "check_docker", "check_dcgm"],
+        "services": ["check_sku_customization", "check_nvidia_fabricmanager", "check_sunrpc_tcp_settings"]
+    },
     "ubuntu22.04": {
         "components": ["check_impi_2021", "check_cuda", "check_nccl", "check_docker", "check_dcgm"],
         "services": ["check_sku_customization", "check_nvidia_fabricmanager", "check_sunrpc_tcp_settings"]
