@@ -70,21 +70,20 @@ then
     exit ${error_code}
 fi
 
-# Install WALinuxAgent
-apt-get install -y python3-setuptools
-pip3 install distro
+# Update WALinuxAgent - for IPoIB
+dnf update -y WALinuxAgent
 
-# Set waagent version and sha256
-waagent_metadata=$(jq -r '.waagent."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
-waagent_version=$(jq -r '.version' <<< $waagent_metadata)
-waagent_sha256=$(jq -r '.sha256' <<< $waagent_metadata)
-waagent_download_url=https://github.com/Azure/WALinuxAgent/archive/refs/tags/v$waagent_version.tar.gz
+# # Set waagent version and sha256
+# waagent_metadata=$(jq -r '.waagent."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
+# waagent_version=$(jq -r '.version' <<< $waagent_metadata)
+# waagent_sha256=$(jq -r '.sha256' <<< $waagent_metadata)
+# waagent_download_url=https://github.com/Azure/WALinuxAgent/archive/refs/tags/v$waagent_version.tar.gz
 
-$COMMON_DIR/download_and_verify.sh $waagent_download_url $waagent_sha256
-tar -xvf $(basename $waagent_download_url)
-pushd WALinuxAgent-$waagent_version/
-python3 setup.py install --register-service
-popd
+# $COMMON_DIR/download_and_verify.sh $waagent_download_url $waagent_sha256
+# tar -xvf $(basename $waagent_download_url)
+# pushd WALinuxAgent-$waagent_version/
+# python3 setup.py install --register-service
+# popd
 
 # Configure WALinuxAgent
 sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
