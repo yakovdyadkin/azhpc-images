@@ -12,7 +12,7 @@ find_distro() {
     then
         local alma_distro=`find_alma_distro`
         echo "${os} ${alma_distro}"
-    elif [[ $os == "Mariner" ]]
+    elif [[ $os == "Common Base Linux Mariner" ]]
     then
         local mariner_distro=`find_mariner_distro`
         echo "${os} ${mariner_distro}"
@@ -38,7 +38,7 @@ find_alma_distro() {
 
 # Find Mariner distro (?????)
 find_mariner_distro() {
-    echo `cat /etc/redhat-release | awk '{print $3}'`
+    echo `cat /etc/os-release | awk 'match($0, /^PRETTY_NAME="(.*)"/, result) { print result[1] }' | awk '{print $2}' | cut -d. -f1,2`
 }
 
 # Find Ubuntu distro
