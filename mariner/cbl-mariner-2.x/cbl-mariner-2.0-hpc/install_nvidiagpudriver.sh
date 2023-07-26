@@ -1,11 +1,12 @@
 #!/bin/bash
 set -ex
 
-$MARINER_COMMON_DIR/install_nvidiagpudriver.sh
+$COMMON_DIR/install_nvidiagpudriver.sh
 
 # Install gdrcopy
 gdrcopy_version=$(jq -r '.gdrcopy."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
 spack add gdrcopy@$gdrcopy_version
+spack concretize -f
 spack install
 $COMMON_DIR/write_component_version.sh "gdrcopy" $gdrcopy_version
 

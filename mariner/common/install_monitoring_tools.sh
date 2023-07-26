@@ -1,20 +1,10 @@
 #!/bin/bash
+set -ex
 
-set -e
-
-# Set moneo metadata
-moneo_version=$(jq -r '.moneo."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
-
-# Dependencies 
+# Dependencies
+ln -fs /usr/bin/python3.8 /usr/bin/python3
 python3 -m pip install --upgrade pip
-python3 -m pip install ansible
+# Adding path to sudo user
+sed -i 's/.*secure_path.*/Defaults    secure_path = "\/usr\/local\/sbin:\/usr\/local\/bin:\/sbin:\/bin:\/usr\/sbin:\/usr\/bin\/"/' /etc/sudoers
 
-monitor_path=$HPC_ENV/tools
-mkdir -p $monitor_path
-
-pushd $monitor_path
-git clone https://github.com/Azure/Moneo  --branch v$moneo_version
-chmod 777 Moneo
-popd
-
-$COMMON_DIR/write_component_version.sh "moneo" $moneo_version
+$COMMON_DIR/install_monitoring_tools.sh

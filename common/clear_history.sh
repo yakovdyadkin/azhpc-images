@@ -12,6 +12,10 @@ find_distro() {
     then
         local alma_distro=`find_alma_distro`
         echo "${os} ${alma_distro}"
+    elif [[ $os == "Mariner" ]]
+    then
+        local mariner_distro=`find_mariner_distro`
+        echo "${os} ${mariner_distro}"
     elif [[ $os == "Ubuntu" ]]
     then
         local ubuntu_distro=`find_ubuntu_distro`
@@ -32,6 +36,11 @@ find_alma_distro() {
     echo `cat /etc/redhat-release | awk '{print $3}'`
 }
 
+# Find Mariner distro (?????)
+find_mariner_distro() {
+    echo `cat /etc/redhat-release | awk '{print $3}'`
+}
+
 # Find Ubuntu distro
 find_ubuntu_distro() {
     echo `cat /etc/os-release | awk 'match($0, /^PRETTY_NAME="(.*)"/, result) { print result[1] }' | awk '{print $2}' | cut -d. -f1,2`
@@ -40,7 +49,7 @@ find_ubuntu_distro() {
 distro=`find_distro`
 echo "Detected distro: ${distro}"
 
-if [[ $distro == *"CentOS Linux"* ]] || [[ $distro == *"AlmaLinux"* ]]
+if [[ $distro == *"CentOS Linux"* ]] || [[ $distro == *"AlmaLinux"* ]] || [[ $distro == *"Mariner"* ]]
 then
     # Sync yum and rpmdb after installing rpm's outside yum
     yum history sync

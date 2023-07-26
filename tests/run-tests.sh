@@ -96,10 +96,10 @@ function set_component_versions {
 
 function set_module_files_path {
     case $ID in
-    ubuntu | mariner)
+    ubuntu)
         export MODULE_FILES_ROOT="/usr/share/modules/modulefiles"
         ;;
-    centos | almalinux) 
+    centos | almalinux | mariner) 
         export MODULE_FILES_ROOT="/usr/share/Modules/modulefiles"
         ;;
     * ) ;;

@@ -1,23 +1,7 @@
 #!/bin/bash
-set -ex
-
-# Install Dependencies
-pip3 install -U netifaces
-pip3 install -U PyYAML
 
 # Disable some unneeded services by default (administrators can re-enable if desired)
-systemctl disable ufw
-
-# Disable cloud-init
-echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
-bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
-network:
-    ethernets:
-        eth0:
-            dhcp4: true
-    version: 2
-EOF
-netplan apply
+systemctl disable firewalld
 
 # Update memory limits
 cat << EOF >> /etc/security/limits.conf
@@ -29,12 +13,12 @@ cat << EOF >> /etc/security/limits.conf
 *               soft    stack           unlimited
 EOF
 
+# Enable reclaim mode
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.gc_thresh1 = 4096" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.gc_thresh2 = 8192" >> /etc/sysctl.conf
 echo "net.ipv4.neigh.default.gc_thresh3 = 16384" >> /etc/sysctl.conf
 echo "sunrpc.tcp_max_slot_table_entries = 128" >> /etc/sysctl.conf
-
 
 ## Systemd service for starting sunrpc and adding setting parameters
 cat <<EOF >/usr/sbin/sunrpc_tcp_settings.sh
@@ -43,6 +27,7 @@ cat <<EOF >/usr/sbin/sunrpc_tcp_settings.sh
 modprobe sunrpc
 sysctl -p
 EOF
+
 chmod 755 /usr/sbin/sunrpc_tcp_settings.sh
 
 cat <<EOF >/etc/systemd/system/sunrpc_tcp_settings.service
@@ -70,35 +55,39 @@ then
     exit ${error_code}
 fi
 
+# Remove auoms if exists - Prevent CPU utilization by auoms
+if yum list installed azsec-monitor >/dev/null 2>&1; then yum remove -y azsec-monitor; fi
+
 # Update WALinuxAgent - for IPoIB
-dnf update -y WALinuxAgent
-
-# # Set waagent version and sha256
-# waagent_metadata=$(jq -r '.waagent."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
-# waagent_version=$(jq -r '.version' <<< $waagent_metadata)
-# waagent_sha256=$(jq -r '.sha256' <<< $waagent_metadata)
-# waagent_download_url=https://github.com/Azure/WALinuxAgent/archive/refs/tags/v$waagent_version.tar.gz
-
-# $COMMON_DIR/download_and_verify.sh $waagent_download_url $waagent_sha256
-# tar -xvf $(basename $waagent_download_url)
-# pushd WALinuxAgent-$waagent_version/
-# python3 setup.py install --register-service
-# popd
+yum update -y WALinuxAgent
 
 # Configure WALinuxAgent
 sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-sed -i -e 's/Provisioning.MonitorHostName=n/Provisioning.MonitorHostName=y/g' /etc/waagent.conf
-echo "Extensions.GoalStatePeriod=300" | tee -a /etc/waagent.conf
-echo "Extensions.InitialGoalStatePeriod=6" | tee -a /etc/waagent.conf
-echo "OS.EnableFirewallPeriod=300" | tee -a /etc/waagent.conf
-echo "OS.RemovePersistentNetRulesPeriod=300" | tee -a /etc/waagent.conf
-echo "OS.RootDeviceScsiTimeoutPeriod=300" | tee -a /etc/waagent.conf
-echo "OS.MonitorDhcpClientRestartPeriod=60" | tee -a /etc/waagent.conf
-echo "Provisioning.MonitorHostNamePeriod=60" | tee -a /etc/waagent.conf
-systemctl daemon-reload
-systemctl restart walinuxagent
 
-$COMMON_DIR/write_component_version.sh "waagent" $waagent_version
+function update_waagent_conf {
+    key=$1
+    value=$2
+
+    # Check if the key exists in the file
+    if grep -q "^$key=" /etc/waagent.conf; then
+        # Update the value if the key exists
+        sed -i "s/^$key=.*/$key=$value/" /etc/waagent.conf
+    else
+        # Add the key-value pair if the key does not exist
+        echo "$key=$value" >> /etc/waagent.conf
+    fi
+}
+
+update_waagent_conf "Extensions.GoalStatePeriod" "300"
+update_waagent_conf "Extensions.InitialGoalStatePeriod" "6"
+update_waagent_conf "OS.EnableFirewallPeriod" "300"
+update_waagent_conf "OS.RemovePersistentNetRulesPeriod" "300"
+update_waagent_conf "OS.RootDeviceScsiTimeoutPeriod" "300"
+update_waagent_conf "OS.MonitorDhcpClientRestartPeriod" "60"
+update_waagent_conf "Provisioning.MonitorHostNamePeriod" "60"
+
+systemctl restart waagent
+$COMMON_DIR/write_component_version.sh "waagent" $(waagent --version | head -n 1 | awk -F' ' '{print $1}' | awk -F- '{print $2}')
 
 # Setting Linux NFS read-ahead limits
 # Reference: 

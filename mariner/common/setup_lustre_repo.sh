@@ -1,10 +1,17 @@
 #!/bin/bash
 set -ex
 
-source /etc/lsb-release
+# Expected params:
+# $1 = the major version of the distro. "8" for RHEL/Alma8, "9" for RHEL/Alma9.
 
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-$DISTRIB_CODENAME/ $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/amlfs.list
+DISTRIB_CODENAME="el$1"
+repo_path=/etc/yum.repos.d/amlfs.repo
 
-# Enable these lines if the MS PMC repo was not already setup.
-#curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-#cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+echo -e "[amlfs]" > $repo_path
+echo -e "name=Azure Lustre Packages" >> $repo_path
+echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> $repo_path
+echo -e "enabled=1" >> $repo_path
+echo -e "gpgcheck=1" >> $repo_path
+echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> $repo_path

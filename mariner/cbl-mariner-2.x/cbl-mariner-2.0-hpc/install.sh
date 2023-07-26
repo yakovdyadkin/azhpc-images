@@ -7,33 +7,38 @@ source ./set_properties.sh
 # install spack
 $MARINER_COMMON_DIR/install_spack.sh
 # Activate the environment/ container
-source $HPC_ENV/spack/share/spack/setup-env.sh
-spack env activate $HPC_ENV
+source /etc/profile
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
+
+# install compilers
+./install_gcc.sh
+
+# install AMD tuned libraries
+$MARINER_COMMON_DIR/install_amd_libs.sh
 
 # install utils
 ./install_utils.sh
 
 # install Lustre client
-$MARINER_COMMON_DIR/install_lustre_client.sh
+$MARINER_COMMON_DIR/install_lustre_client.sh "8"
 
 # install mellanox ofed
 ./install_mellanoxofed.sh
+
+# install mpi libraries
+./install_mpis.sh
 
 # install nvidia gpu driver
 ./install_nvidiagpudriver.sh
 
 # cleanup downloaded tarballs - clear some space
-rm -rf *.tgz *.bz2 *.tbz *.tar.gz *.run *.deb *_offline.sh
+rm -rf *.tgz *.bz2 *.tbz *.tar.gz *.run *.deb
 rm -rf /tmp/MLNX_OFED_LINUX* /tmp/*conf*
-rm -rf /var/intel/ /var/cache/*
-rm -rf /root/intel/
+rm -rf /var/cache/*
 rm -Rf -- */
 
 # install Intel libraries
-$MARINER_COMMON_DIR/install_intel_libs.sh
-
-# install mpi libraries
-./install_mpis.sh
+$COMMON_DIR/install_intel_libs.sh
 
 # Install NCCL
 $MARINER_COMMON_DIR/install_nccl.sh
@@ -42,37 +47,37 @@ spack clean -a
 spack gc -y
 
 # Install NVIDIA docker container
-$MARINER_COMMON_DIR/install_docker.sh
+$COMMON_DIR/../mariner/cbl-mariner-2.x/common/install_docker.sh
 
 # Install DCGM
-$MARINER_COMMON_DIR/install_dcgm.sh
+./install_dcgm.sh
 
-# install diagnostic script
-$COMMON_DIR/install_hpcdiag.sh
+# optimizations
+./hpc-tuning.sh
 
 # install persistent rdma naming
 $COMMON_DIR/install_azure_persistent_rdma_naming.sh
 
-# optimizations
-$MARINER_COMMON_DIR/hpc-tuning.sh
+# add udev rule
+$MARINER_COMMON_DIR/add-udev-rules.sh
 
-# copy test file
-$COMMON_DIR/copy_test_file.sh
+# add interface rules
+$MARINER_COMMON_DIR/network-config.sh
 
-# install monitor tools
+# install diagnostic script
+$COMMON_DIR/install_hpcdiag.sh
+
+#install monitoring tools
 $MARINER_COMMON_DIR/install_monitoring_tools.sh
-
-# install AMD libs
-$MARINER_COMMON_DIR/install_amd_libs.sh
 
 # install Azure/NHC Health Checks
 $COMMON_DIR/install_health_checks.sh
 
-# diable auto kernel updates
-$MARINER_COMMON_DIR/disable_auto_upgrade.sh
+# copy test file
+$COMMON_DIR/copy_test_file.sh
 
-# Disable Predictive Network interface renaming
-$MARINER_COMMON_DIR/disable_predictive_interface_renaming.sh
+# disable cloud-init
+$MARINER_COMMON_DIR/disable_cloudinit.sh
 
 # SKU Customization
 $COMMON_DIR/setup_sku_customizations.sh

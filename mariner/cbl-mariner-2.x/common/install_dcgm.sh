@@ -7,13 +7,9 @@ dcgm_version=$(jq -r '.version' <<< $dcgm_metadata)
 dcgm_distribution=$(jq -r '.distribution' <<< $dcgm_metadata)
 
 # Install DCGM
-# Reference: https://developer.nvidia.com/dcgm#Downloads
-wget https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/cuda-keyring_1.0-1_all.deb
-dpkg -i ./cuda-keyring_1.0-1_all.deb
-add-apt-repository -y "deb https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/ /"
-
-apt-get update
-apt-get install -y datacenter-gpu-manager=1:$dcgm_version
+dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/cuda-$dcgm_distribution.repo
+dnf clean expire-cache
+dnf install -y datacenter-gpu-manager-1:$dcgm_version
 $COMMON_DIR/write_component_version.sh "dcgm" $dcgm_version
 
 # Enable the dcgm service

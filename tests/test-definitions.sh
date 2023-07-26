@@ -243,8 +243,8 @@ function verify_sunrpc_tcp_settings_service {
 
 function verify_apt_yum_update {
     case $ID in
-        ubuntu | mariner) sudo apt-get -q --assume-no update;;
-        centos | almalinux) sudo yum update -y --setopt tsflags=test;
+        ubuntu) sudo apt-get -q --assume-no update;;
+        centos | almalinux | mariner) sudo yum update -y --setopt tsflags=test;
             sudo yum clean packages;;
         * ) ;;
     esac

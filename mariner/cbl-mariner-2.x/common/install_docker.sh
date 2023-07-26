@@ -1,28 +1,28 @@
 #!/bin/bash
 set -ex
 
-# Install Moby Engine and CLI
-apt-get install -y moby-engine
+# Install Moby Engine + CLI
+yum install -y moby-engine
+yum install -y moby-cli
 
 # Install NVIDIA Docker
 # Reference: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
 # Setting up NVIDIA Container Toolkit
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add - \
-&& curl -s -L https://nvidia.github.io/nvidia-docker/$DISTRIBUTION/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list
-# MIG Capability on A100
-curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$DISTRIBUTION/nvidia-container-runtime.list | tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+distribution="rhel8.7";
 
-apt-get update
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | tee /etc/yum.repos.d/nvidia-docker.repo
+# MIG Capability on A100
+# curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
+
+yum clean expire-cache
 # Install nvidia-docker package
 # Install NVIDIA container toolkit and mark NVIDIA packages on hold
-apt-get install -y nvidia-container-toolkit
-apt-mark hold nvidia-container-toolkit
-apt-mark hold libnvidia-container-tools
-apt-mark hold libnvidia-container1
+yum install -y nvidia-container-toolkit
 
 # Install NVIDIA container runtime and mark NVIDIA packages on hold
-apt-get install -y nvidia-container-runtime
-apt-mark hold nvidia-container-runtime
+yum install -y nvidia-container-runtime
+# Mark the installed packages on hold to disable updates
+sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 
 wget https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/nvidia-docker
 cp nvidia-docker /bin/
@@ -50,10 +50,10 @@ systemctl enable docker
 systemctl restart docker
 
 # Write the docker version to components file
-moby_version=$(apt list --installed | grep moby-engine | awk -F' ' '{print $2}')
 docker_version=$(nvidia-docker --version | awk -F' ' '{print $3}')
-$COMMON_DIR/write_component_version.sh "moby" $moby_version
 $COMMON_DIR/write_component_version.sh "nvidia_docker" ${docker_version::-1}
 
-# Remove unwanted repos
-rm -f /etc/apt/sources.list.d/nvidia*
+# Clean repos
+rm -rf /etc/yum.repos.d/nvidia-*
+rm -rf /var/cache/yum/x86_64/8/nvidia-*
+rm -rf /var/cache/yum/x86_64/8/libnvidia-container/
