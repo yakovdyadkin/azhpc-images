@@ -12,6 +12,7 @@ dnf install -y automake \
     gdb \
 	git \
     glibc-devel \
+    lsb-release \
 	make \
     patchutils  
 
@@ -21,7 +22,6 @@ dnf install -y curl \
     gnupg2 \
     hostname \
     iproute \
-    redhat-lsb-core \
     python3 \
     python3-pip \
     python3-setuptools \
