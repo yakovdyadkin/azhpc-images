@@ -4,43 +4,16 @@ set -ex
 # dependencies for spack installation
 # Ref: https://spack.readthedocs.io/en/latest/getting_started.html
 # dnf group install "Development Tools" -y
-# Group unavailable in so installing individual packages
-dnf install -y autoconf \
-    automake \
-    binutils \
-    bison \
-    flex \
+# Group unavailable in so installing required individual packages
+dnf install -y automake \
+	binutils \
     gcc \
     gcc-c++ \
     gdb \
+	git \
     glibc-devel \
-    libtool \
-    make \
-    pkgconf \
-    pkgconf-m4 \
-    pkgconf-pkg-config \
-    redhat-rpm-config \
-    rpm-build \
-    rpm-sign \
-    strace \
-    asciidoc \
-    byacc \
-    ctags \
-    diffstat \
-    elfutils-libelf-devel \
-    git \
-    intltool \
-    jna \
-    ltrace \
-    patchutils \
-    perl-Fedora-VSP \
-    perl-Sys-Syslog \
-    perl-generators \
-    pesign \
-    source-highlight \
-    systemtap \
-    valgrind \
-    valgrind-devel   
+	make \
+    patchutils  
 
 dnf install -y curl \
     findutils \
