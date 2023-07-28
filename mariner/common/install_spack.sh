@@ -20,7 +20,6 @@ dnf install -y curl \
     findutils \
     gcc-gfortran \
     gnupg2 \
-    hostname \
     iproute \
     python3 \
     python3-pip \
