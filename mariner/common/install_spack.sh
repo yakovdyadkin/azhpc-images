@@ -22,7 +22,7 @@ dnf install -y curl \
     python3-pip \
     python3-setuptools \
     unzip
-dnf --enablerepo=ha install -y python3-boto3
+# dnf --enablerepo=ha install -y python3-boto3
 
 ## Environment setup for Component installations using Spack
 # Create a directory to setup an environment
