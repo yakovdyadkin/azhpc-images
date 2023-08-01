@@ -5,15 +5,12 @@ set -ex
 # Ref: https://spack.readthedocs.io/en/latest/getting_started.html
 # dnf group install "Development Tools" -y
 # Group unavailable in so installing required individual packages
-dnf install -y automake \
-	binutils \
-    gcc \
+dnf install -y build-essential \
     gcc-c++ \
     gdb \
 	git \
     glibc-devel \
     lsb-release \
-	make \
     patchutils  
 
 dnf install -y curl \
@@ -25,7 +22,7 @@ dnf install -y curl \
     python3-pip \
     python3-setuptools \
     unzip
-# dnf --enablerepo=ha install -y python3-boto3
+dnf --enablerepo=ha install -y python3-boto3
 
 ## Environment setup for Component installations using Spack
 # Create a directory to setup an environment
