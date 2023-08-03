@@ -35,9 +35,6 @@ pushd $HPC_ENV/spack
 git checkout $spack_branch
 popd
 
-# change ownership of spack directory to hpcuser
-chown -R hpcuser:hpcuser /opt/azurehpc
-
 # Set environment variables
 source_spack_env=". $HPC_ENV/spack/share/spack/setup-env.sh"
 eval $source_spack_env
