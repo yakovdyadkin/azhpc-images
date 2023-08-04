@@ -2,15 +2,14 @@
 set -ex
 
 # Install Kernel dependencies
-dnf install -y https://packages.microsoft.com/cbl-mariner/1.0/prod/update/x86_64/rpms/kernel-devel-$KERNEL.rpm \
-    https://packages.microsoft.com/cbl-mariner/1.0/prod/update/x86_64/rpms/kernel-headers-$KERNEL.rpm 
-    
+dnf install -y  kernel-headers \
+                kernel-devel
     
     #https://repo.almalinux.org/vault/8.7/BaseOS/x86_64/os/Packages/kernel-modules-extra-$KERNEL.rpm
 
-# Install Python 3.8
-dnf install -y python3.8
-ln -fs /usr/bin/python3.8 /usr/bin/python3
+# Install Python 3
+dnf install -y python3
+# ln -fs /usr/bin/python3.8 /usr/bin/python3
 
 # install pssh
 pssh_metadata=$(jq -r '.pssh."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
