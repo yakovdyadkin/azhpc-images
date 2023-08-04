@@ -8,7 +8,7 @@ source ./set_properties.sh
 $MARINER_COMMON_DIR/install_spack.sh
 # Activate the environment/ container
 source /etc/bashrc
-# export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 
 # install compilers
 ./install_gcc.sh

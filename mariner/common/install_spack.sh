@@ -10,7 +10,7 @@ dnf install -y build-essential \
     gdb \
 	git \
     glibc-devel \
-    lmdb \
+    lmdb-devel \
     lsb-release \
     patchutils  
 
