@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-source /etc/profile
+source /etc/bashrc
 
 # Set AOCC and AOCL versions
 amd_metadata=$(jq -r '.amd."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
