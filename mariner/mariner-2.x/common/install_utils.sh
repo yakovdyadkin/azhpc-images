@@ -9,7 +9,7 @@ dnf install -y  kernel-headers \
 
 # Install Python 3
 dnf install -y python3
-ln -fs /usr/bin/python3.9 /usr/bin/python3.6
+# ln -fs /usr/bin/python3.9 /usr/bin/python3.6
 
 # install pssh
 # pssh_metadata=$(jq -r '.pssh."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
@@ -33,7 +33,8 @@ dnf install -y python3-devel \
     binutils-devel \
     munge \
     numactl-devel \
-    environment-modules
+    environment-modules \
+    pam-devel
 
 #    kernel-rpm-macros \
 #    tk \
