@@ -20,7 +20,7 @@ $MARINER_COMMON_DIR/install_amd_libs.sh
 ./install_utils.sh
 
 # install Lustre client
-$MARINER_COMMON_DIR/install_lustre_client.sh "8"
+# $MARINER_COMMON_DIR/install_lustre_client.sh "8"
 
 # install mellanox ofed
 ./install_mellanoxofed.sh
