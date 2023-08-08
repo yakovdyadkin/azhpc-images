@@ -34,7 +34,8 @@ dnf install -y python3-devel \
     munge \
     numactl-devel \
     environment-modules \
-    pam-devel
+    pam-devel \
+    mariner-rpm-macros
 
 #    kernel-rpm-macros \
 #    tk \
