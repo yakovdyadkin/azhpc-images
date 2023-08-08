@@ -12,6 +12,7 @@ mofed_version=$(jq -r '.version' <<< $mofed_metadata)
 # tar zxvf $tarball
 
 # ./$mofed_folder/mlnxofedinstall --kernel $KERNEL --kernel-sources /usr/src/kernels/$KERNEL --add-kernel-support --skip-repo --skip-unsupported-devices-check --without-fw-update --distro rhel8.7
+dnf install -y mlnx-ofa_kernel-$mofed_version
 dnf install -y mlnx-ofa_kernel-modules-$mofed_version
 $COMMON_DIR/write_component_version.sh "mofed" $mofed_version
 
