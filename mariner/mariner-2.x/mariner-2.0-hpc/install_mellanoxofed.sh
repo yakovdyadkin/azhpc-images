@@ -7,7 +7,7 @@ mofed_sha256=$(jq -r '.sha256' <<< $mofed_metadata)
 tarball="MLNX_OFED_LINUX-$mofed_version-rhel8.7-x86_64.tgz"
 mofed_download_url=https://content.mellanox.com/ofed/MLNX_OFED-$mofed_version/$tarball
 mofed_folder=$(basename $mofed_download_url .tgz)
-kernel_without_arch="${full_version%.*}"
+kernel_without_arch="${KERNEL%.*}"
 
 $COMMON_DIR/download_and_verify.sh $mofed_download_url $mofed_sha256
 tar zxvf $tarball
