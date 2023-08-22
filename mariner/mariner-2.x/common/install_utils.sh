@@ -35,7 +35,8 @@ dnf install -y python3-devel \
     numactl-devel \
     environment-modules \
     pam-devel \
-    mariner-rpm-macros
+    mariner-rpm-macros \
+    ed
 
 #    kernel-rpm-macros \
 #    tk \
