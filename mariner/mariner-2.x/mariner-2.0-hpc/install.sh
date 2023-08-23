@@ -26,7 +26,7 @@ $MARINER_COMMON_DIR/install_amd_libs.sh
 # ./install_mellanoxofed.sh
 
 # install mpi libraries
-./install_mpis.sh
+# ./install_mpis.sh
 
 # install nvidia gpu driver
 ./install_nvidiagpudriver.sh
