@@ -11,7 +11,7 @@ source /etc/bashrc
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 
 # install compilers
-./install_gcc.sh
+# ./install_gcc.sh
 
 # install AMD tuned libraries
 $MARINER_COMMON_DIR/install_amd_libs.sh
