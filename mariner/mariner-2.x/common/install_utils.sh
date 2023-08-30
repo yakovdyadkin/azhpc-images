@@ -36,10 +36,13 @@ dnf install -y python3-devel \
     environment-modules \
     pam-devel \
     mariner-rpm-macros \
-    ed
+    ed \
+    lsof \
+    pciutils \
+    libusbx \
+    tk
 
 #    kernel-rpm-macros \
-#    tk \
     
 ## Disable kernel updates
 echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
