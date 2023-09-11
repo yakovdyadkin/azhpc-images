@@ -137,14 +137,10 @@
         },
         "mariner2.0": {
             "driver": {
-                "version": "525.105.17",
-                "sha256": "c635a21a282c9b53485f19ebb64a0f4b536a968b94d4d97629e0bc547a58142a"
+                "version": "525.85.12-2"
             },
             "fabricmanager": {
-                "prefix": "525",
-                "distribution": "rhel8",
-                "version": "525.105.17-1",
-                "sha256": "4d6a11cbaa2aa278ef3fc9818c77f0f9fdf10e54d0d15b607b5beaae90b119ec"        
+                "version": "525.85.12-1"
             }  
         }
     },
