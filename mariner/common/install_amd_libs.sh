@@ -22,7 +22,7 @@ spack env activate /opt/amd
 
 # Install AOCC
 spack add aocc@$aocc_version +license-agreed
-spack add amd-aocl@$aocl_version %gcc@$gcc_version
+spack add amd-aocl@$aocl_version
 spack concretize -f
 spack install
 
