@@ -22,7 +22,7 @@ spack compiler add $gcc_home
 
 # Install AOCC
 spack add aocc@$aocc_version +license-agreed
-spack add amd-aocl@$aocl_version %gcc@9.2.0
+spack add amd-aocl@$aocl_version %gcc@$gcc_version
 spack concretize -f
 spack install
 
