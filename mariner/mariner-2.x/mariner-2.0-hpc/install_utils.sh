@@ -14,3 +14,5 @@ cp ./microsoft-prod.repo /etc/yum.repos.d/
 yum repolist
 
 ../common/install_utils.sh
+
+rm -rf ./packages.microsoft.com/

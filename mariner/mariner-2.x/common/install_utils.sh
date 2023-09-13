@@ -30,19 +30,17 @@ dnf install -y python3-devel \
     libnl3-devel \
     rpm-build \
     make \
+    mariner-rpm-macros \
+    tk \
     binutils-devel \
     munge \
     numactl-devel \
     environment-modules \
     pam-devel \
-    mariner-rpm-macros \
     ed \
     lsof \
     pciutils \
-    libusbx \
-    tk
-
-#    kernel-rpm-macros \
+    libusbx
     
 ## Disable kernel updates
 echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
@@ -62,7 +60,6 @@ dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages
 
 # Remove rpm files
 rm -rf ./dl.fedoraproject.org/
-rm -rf ./packages.microsoft.com/
 
 # Install common dependencies
 $COMMON_DIR/install_utils.sh

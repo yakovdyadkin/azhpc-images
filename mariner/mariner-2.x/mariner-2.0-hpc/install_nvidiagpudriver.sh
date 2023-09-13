@@ -43,3 +43,5 @@ $COMMON_DIR/write_component_version.sh "gdrcopy" $gdrcopy_version
 
 # Install nvidia fabric manager (required for ND96asr_v4)
 ../common/install_nvidia_fabric_manager.sh
+
+rm -rf ./packages.microsoft.com/
