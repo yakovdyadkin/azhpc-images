@@ -37,10 +37,7 @@ dnf install -y python3-devel \
     numactl-devel \
     environment-modules \
     pam-devel \
-    ed \
-    lsof \
-    pciutils \
-    libusbx
+    ed 
     
 ## Disable kernel updates
 echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
