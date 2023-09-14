@@ -6,7 +6,7 @@ cuda_metadata=$(jq -r '.cuda."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
 cuda_driver_version=$(jq -r '.driver.version' <<< $cuda_metadata)
 cuda_samples_version=$(jq -r '.samples.version' <<< $cuda_metadata)
 cuda_samples_sha256=$(jq -r '.samples.sha256' <<< $cuda_metadata)
-kernel_with_dots=$($KERNEL | sed 's/_/./g')
+kernel_with_dots=${KERNEL/-/.}
 
 # Install CUDA using spack
 # If there is a space crunch for cuda installation clear /tmp/tmp*, /tmp/MLNX* and /tmp/ofed.conf
