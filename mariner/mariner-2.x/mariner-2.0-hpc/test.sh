@@ -12,5 +12,5 @@ nvidia_driver_version=$(jq -r '.version' <<< $nvidia_driver_metadata)
 echo $kernel_with_dots
 echo $nvidia_driver_version
 
-echo $nvidia_driver_version_$kernel_with_dots
-echo cuda-$nvidia_driver_version_$kernel_with_dots.rpm
+echo ${nvidia_driver_version}_${kernel_with_dots}
+echo cuda-${nvidia_driver_version}_${kernel_with_dots}.rpm

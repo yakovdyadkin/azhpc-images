@@ -32,7 +32,7 @@ popd
 # Install NVIDIA driver
 nvidia_driver_metadata=$(jq -r '.nvidia."'"$DISTRIBUTION"'".driver' <<< $COMPONENT_VERSIONS)
 nvidia_driver_version=$(jq -r '.version' <<< $nvidia_driver_metadata)
-dnf install -y https://packages.microsoft.com/cbl-mariner/2.0/prod/nvidia/x86_64/Packages/c/cuda-$nvidia_driver_version_$kernel_with_dots.rpm 
+dnf install -y https://packages.microsoft.com/cbl-mariner/2.0/prod/nvidia/x86_64/Packages/c/cuda-${nvidia_driver_version}_${kernel_with_dots}.rpm 
 $COMMON_DIR/write_component_version.sh "nvidia" $nvidia_driver_version
 
 # Install gdrcopy
