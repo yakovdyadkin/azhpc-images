@@ -29,7 +29,7 @@ export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 # ./install_mpis.sh
 
 # install nvidia gpu driver
-./install_nvidiagpudriver.sh
+# ./install_nvidiagpudriver.sh
 
 # cleanup downloaded tarballs - clear some space
 rm -rf *.tgz *.bz2 *.tbz *.tar.gz *.run *.deb
