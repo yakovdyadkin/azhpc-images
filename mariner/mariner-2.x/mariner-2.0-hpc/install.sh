@@ -41,7 +41,7 @@ rm -Rf -- */
 $COMMON_DIR/install_intel_libs.sh
 
 # Install NCCL
-$MARINER_COMMON_DIR/install_nccl.sh
+# $MARINER_COMMON_DIR/install_nccl.sh
 
 spack clean -a
 spack gc -y
