@@ -8,14 +8,12 @@ dnf install -y moby-cli
 # Install NVIDIA Docker
 # Reference: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
 # Setting up NVIDIA Container Toolkit
-distribution="rhel8.7";
 
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | tee /etc/yum.repos.d/nvidia-docker.repo
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | tee /etc/yum.repos.d/nvidia-container-toolkit.repo
 # MIG Capability on A100
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
 dnf clean expire-cache
-# Install nvidia-docker package
 # Install NVIDIA container toolkit and mark NVIDIA packages on hold
 dnf install -y nvidia-container-toolkit
 
@@ -27,8 +25,8 @@ sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 wget https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/nvidia-docker
 cp nvidia-docker /bin/
 chmod +x /bin/nvidia-docker
-wget https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/daemon.json
-cp daemon.json /etc/docker/
+
+nvidia-ctk runtime configure
 
 # Working setup can be tested by running a base CUDA container
 # nvidia-docker run -e NVIDIA_VISIBLE_DEVICES=all nvidia/cuda:11.0-base nvidia-smi
