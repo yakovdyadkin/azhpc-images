@@ -50,10 +50,10 @@ spack gc -y
 $COMMON_DIR/../mariner/mariner-2.x/common/install_docker.sh
 
 # Install DCGM
-./install_dcgm.sh
+# ./install_dcgm.sh
 
 # optimizations
-./hpc-tuning.sh
+# ./hpc-tuning.sh
 
 # install persistent rdma naming
 $COMMON_DIR/install_azure_persistent_rdma_naming.sh

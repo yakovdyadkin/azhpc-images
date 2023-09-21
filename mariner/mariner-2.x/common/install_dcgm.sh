@@ -7,7 +7,7 @@ dcgm_version=$(jq -r '.version' <<< $dcgm_metadata)
 dcgm_distribution=$(jq -r '.distribution' <<< $dcgm_metadata)
 
 # Install DCGM
-dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/cuda-$dcgm_distribution.repo
+curl -s -L https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/cuda-$dcgm_distribution.repo | tee /etc/yum.repos.d/cuda-$dcgm_distribution.repo
 dnf clean expire-cache
 dnf install -y datacenter-gpu-manager-1:$dcgm_version
 $COMMON_DIR/write_component_version.sh "dcgm" $dcgm_version
@@ -23,3 +23,6 @@ then
     echo "DCGM is inactive!"
     exit $error_code
 fi
+
+# Clean repos
+rm -rf /etc/yum.repos.d/cuda-*
