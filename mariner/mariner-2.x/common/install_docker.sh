@@ -2,8 +2,8 @@
 set -ex
 
 # Install Moby Engine + CLI
-yum install -y moby-engine
-yum install -y moby-cli
+dnf install -y moby-engine
+dnf install -y moby-cli
 
 # Install NVIDIA Docker
 # Reference: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
@@ -14,13 +14,13 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.re
 # MIG Capability on A100
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
-yum clean expire-cache
+dnf clean expire-cache
 # Install nvidia-docker package
 # Install NVIDIA container toolkit and mark NVIDIA packages on hold
-yum install -y nvidia-container-toolkit
+dnf install -y nvidia-container-toolkit
 
 # Install NVIDIA container runtime and mark NVIDIA packages on hold
-yum install -y nvidia-container-runtime
+dnf install -y nvidia-container-runtime
 # Mark the installed packages on hold to disable updates
 sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 

@@ -11,7 +11,7 @@ curl https://packages.microsoft.com/config/rhel/8/prod.repo > ./microsoft-prod.r
 # Copy the generated list to the sources.list.d directory
 cp ./microsoft-prod.repo /etc/yum.repos.d/
 
-yum repolist
+dnf repolist
 
 ../common/install_utils.sh
 

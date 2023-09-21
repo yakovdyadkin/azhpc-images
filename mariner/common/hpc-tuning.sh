@@ -56,10 +56,10 @@ then
 fi
 
 # Remove auoms if exists - Prevent CPU utilization by auoms
-if yum list installed azsec-monitor >/dev/null 2>&1; then yum remove -y azsec-monitor; fi
+if dnf list installed azsec-monitor >/dev/null 2>&1; then dnf remove -y azsec-monitor; fi
 
 # Update WALinuxAgent - for IPoIB
-yum update -y WALinuxAgent
+dnf update -y WALinuxAgent
 
 # Configure WALinuxAgent
 sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
