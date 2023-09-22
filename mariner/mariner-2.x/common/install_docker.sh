@@ -14,6 +14,9 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
 dnf clean expire-cache
+# Install nvidia-docker package
+dnf install -y nvidia-docker2
+
 # Install NVIDIA container toolkit and mark NVIDIA packages on hold
 dnf install -y nvidia-container-toolkit
 
