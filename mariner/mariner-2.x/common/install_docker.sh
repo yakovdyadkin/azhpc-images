@@ -13,7 +13,7 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 # MIG Capability on A100
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
-dnf clean expire-cache
+# dnf clean expire-cache
 
 # Install NVIDIA container toolkit and mark NVIDIA packages on hold
 dnf install -y nvidia-container-toolkit
