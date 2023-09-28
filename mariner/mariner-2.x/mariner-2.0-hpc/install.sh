@@ -56,7 +56,7 @@ $COMMON_DIR/../mariner/mariner-2.x/common/install_docker.sh
 # ./hpc-tuning.sh
 
 # install persistent rdma naming
-$COMMON_DIR/install_azure_persistent_rdma_naming.sh
+# $COMMON_DIR/install_azure_persistent_rdma_naming.sh
 
 # add udev rule
 $MARINER_COMMON_DIR/add-udev-rules.sh
