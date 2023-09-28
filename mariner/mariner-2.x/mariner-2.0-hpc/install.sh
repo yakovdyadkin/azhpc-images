@@ -62,7 +62,7 @@ $COMMON_DIR/../mariner/mariner-2.x/common/install_docker.sh
 $MARINER_COMMON_DIR/add-udev-rules.sh
 
 # add interface rules
-$MARINER_COMMON_DIR/network-config.sh
+# $MARINER_COMMON_DIR/network-config.sh
 
 # install diagnostic script
 $COMMON_DIR/install_hpcdiag.sh
