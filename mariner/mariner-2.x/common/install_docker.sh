@@ -36,6 +36,20 @@ systemctl restart docker
 # Working setup can be tested by running a base CUDA container
 # nvidia-docker run -e NVIDIA_VISIBLE_DEVICES=all nvidia/cuda:11.0-base nvidia-smi
 
+nvidia-ctk runtime configure --runtime=containerd
+
+# disabling aufs, btrfs, zfs and devmapper snapshotter plugins
+# mkdir -p /etc/containerd
+# cat << EOF | tee -a /etc/containerd/config.toml
+# disabled_plugins = ["cri", "zfs", "aufs", "btrfs", "devmapper"]
+# EOF
+
+# restart containerd service
+systemctl restart containerd
+
+# status of containerd snapshotter plugins
+ctr plugin ls
+
 # Write the docker version to components file
 docker_version=$(docker --version | awk -F' ' '{print $3}')
 $COMMON_DIR/write_component_version.sh "nvidia_docker" ${docker_version::-1}
