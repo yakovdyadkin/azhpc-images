@@ -19,9 +19,9 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 dnf install -y nvidia-container-toolkit
 
 # Install NVIDIA container runtime and mark NVIDIA packages on hold
-# dnf install -y nvidia-container-runtime
+dnf install -y nvidia-container-runtime
 # Mark the installed packages on hold to disable updates
-# sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
+sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 
 # wget https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/nvidia-docker
 # cp nvidia-docker /bin/
@@ -51,7 +51,7 @@ systemctl restart containerd
 ctr plugin ls
 
 # Write the docker version to components file
-docker_version=$(nvidia-docker --version | awk -F' ' '{print $3}')
+docker_version=$(docker --version | awk -F' ' '{print $3}')
 $COMMON_DIR/write_component_version.sh "nvidia_docker" ${docker_version::-1}
 
 # Clean repos
