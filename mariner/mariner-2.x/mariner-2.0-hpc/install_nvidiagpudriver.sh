@@ -37,11 +37,11 @@ dnf install -y https://packages.microsoft.com/cbl-mariner/2.0/prod/nvidia/x86_64
 $COMMON_DIR/write_component_version.sh "nvidia" $nvidia_driver_version
 
 # Install gdrcopy
-gdrcopy_version=$(jq -r '.gdrcopy."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
-spack add gdrcopy@$gdrcopy_version
-spack concretize -f
-spack install
-$COMMON_DIR/write_component_version.sh "gdrcopy" $gdrcopy_version
+# gdrcopy_version=$(jq -r '.gdrcopy."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
+# spack add gdrcopy@$gdrcopy_version
+# spack concretize -f
+# spack install
+# $COMMON_DIR/write_component_version.sh "gdrcopy" $gdrcopy_version
 
 # Install nvidia fabric manager (required for ND96asr_v4)
 ../common/install_nvidia_fabric_manager.sh
