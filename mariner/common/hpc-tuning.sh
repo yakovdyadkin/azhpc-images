@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Disable some unneeded services by default (administrators can re-enable if desired)
-systemctl disable firewalld
-
 # Update memory limits
 cat << EOF >> /etc/security/limits.conf
 *               hard    memlock         unlimited
