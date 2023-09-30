@@ -137,10 +137,10 @@
         },
         "mariner2.0": {
             "driver": {
-                "version": "525.85.12-2"
+                "version": "525.85.12"
             },
             "fabricmanager": {
-                "version": "525.85.12-1"
+                "version": "525.85.12"
             }  
         }
     },
