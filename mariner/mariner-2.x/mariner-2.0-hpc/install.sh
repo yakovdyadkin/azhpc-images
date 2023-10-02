@@ -47,7 +47,7 @@ spack clean -a
 spack gc -y
 
 # Install NVIDIA docker container
-$COMMON_DIR/../mariner/mariner-2.x/common/install_docker.sh
+./install_docker.sh
 
 # Install DCGM
 # ./install_dcgm.sh

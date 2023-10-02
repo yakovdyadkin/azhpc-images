@@ -1,4 +1,3 @@
 #!/bin/bash
 
-../common/hpc-tuning.sh
-
+../../common/hpc-tuning.sh
