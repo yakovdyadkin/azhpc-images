@@ -22,6 +22,8 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64' | tee -a /e
 
 $COMMON_DIR/write_component_version.sh "cuda" $cuda_driver_version
 
+source /etc/profile
+
 # Install CUDA samples
 tarball="v$cuda_samples_version.tar.gz"
 cuda_samples_download_url=https://github.com/NVIDIA/cuda-samples/archive/refs/tags/$tarball
@@ -39,6 +41,9 @@ nvidia_driver_version=$(jq -r '.version' <<< $nvidia_driver_metadata)
 dnf install -y cuda-$nvidia_driver_version
 $COMMON_DIR/write_component_version.sh "nvidia" $nvidia_driver_version
 
+# cannot find -lcuda
+# tried adding /usr/lib64 to LD_LIBRARY_PATH
+# tried adding /usr/lib64 to ld.so.conf and running ldconfig
 # Install gdrcopy
 # gdrcopy_version=$(jq -r '.gdrcopy."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
 # spack add gdrcopy@$gdrcopy_version
