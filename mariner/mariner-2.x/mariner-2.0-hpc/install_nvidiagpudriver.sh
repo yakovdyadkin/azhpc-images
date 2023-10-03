@@ -22,7 +22,6 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64' | tee -a /e
 
 $COMMON_DIR/write_component_version.sh "cuda" $cuda_driver_version
 
-source /etc/profile
 
 # Install CUDA samples
 tarball="v$cuda_samples_version.tar.gz"
