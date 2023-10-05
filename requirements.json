@@ -228,13 +228,13 @@
     },
     "moneo": {
         "ubuntu22.04": {
-            "version": "0.3.1"
+            "version": "0.3.3"
         },
         "almalinux8.7": {
-            "version": "0.3.1"
+            "version": "0.3.3"
         },
         "mariner2.0": {
-            "version": "0.3.1"
+            "version": "0.3.3"
         }
     },
     "pssh": {
@@ -278,13 +278,13 @@
     },
     "azhc": {
         "almalinux8.7": {
-            "version": "0.2.3"
+            "version": "0.2.5"
         },
         "ubuntu22.04": {
-            "version": "0.3.1"
+            "version": "0.2.5"
         },
         "mariner2.0": {
-            "version": "0.2.3"
+            "version": "0.2.5"
         }
     }
 }
