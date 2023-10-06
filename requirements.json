@@ -298,5 +298,16 @@
         "mariner2.0": {
             "version": "0.2.5"
         }
+    },
+    "rdma_core": {
+        "almalinux8.7": {
+            "version": "34.10"
+        },
+        "ubuntu22.04": {
+            "version": "34.10"
+        },
+        "mariner2.0": {
+            "version": "47.1"
+        }
     }
 }
