@@ -45,6 +45,7 @@ dnf install -y python3-devel \
     libnl3-devel \
     rpm-build \
     make \
+    cmake \
     mariner-rpm-macros \
     tk \
     binutils-devel \
