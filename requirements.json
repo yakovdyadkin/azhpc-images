@@ -301,13 +301,13 @@
     },
     "rdma_core": {
         "almalinux8.7": {
-            "version": "34.10"
+            "branch": "stable-v34"
         },
         "ubuntu22.04": {
-            "version": "34.10"
+            "branch": "stable-v34"
         },
         "mariner2.0": {
-            "version": "47.1"
+            "branch": "stable-v47"
         }
     }
 }
