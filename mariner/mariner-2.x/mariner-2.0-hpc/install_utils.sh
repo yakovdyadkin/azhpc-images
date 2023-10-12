@@ -6,7 +6,7 @@ curl -s -L https://packages.microsoft.com/cbl-mariner/2.0/prod/extended/x86_64/c
 
 # Setup microsoft packages repository for moby
 # Download the repository configuration package
-curl -s -L https://packages.microsoft.com/config/rhel/8/prod.repo | tee /etc/yum.repos.d/microsoft-prod.repo
+# curl -s -L https://packages.microsoft.com/config/rhel/8/prod.repo | tee /etc/yum.repos.d/microsoft-prod.repo
 
 tdnf repolist
 
