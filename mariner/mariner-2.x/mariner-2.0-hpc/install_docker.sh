@@ -13,11 +13,11 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 # MIG Capability on A100
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
-# Install NVIDIA container toolkit and mark NVIDIA packages on hold
-tdnf install -y nvidia-container-toolkit
+# Install NVIDIA container toolkit
+dnf install -y nvidia-container-toolkit
 
-# Install NVIDIA container runtime and mark NVIDIA packages on hold
-tdnf install -y nvidia-container-runtime
+# Install NVIDIA container runtime
+dnf install -y nvidia-container-runtime
 # Mark the installed packages on hold to disable updates
 sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 
@@ -40,7 +40,7 @@ ctr plugin ls
 
 # Write the docker version to components file
 docker_version=$(docker --version | awk -F' ' '{print $3}')
-$COMMON_DIR/write_component_version.sh "nvidia_docker" ${docker_version::-1}
+$COMMON_DIR/write_component_version.sh "docker" ${docker_version::-1}
 
 # Clean repos
 rm -rf /etc/yum.repos.d/nvidia-*
