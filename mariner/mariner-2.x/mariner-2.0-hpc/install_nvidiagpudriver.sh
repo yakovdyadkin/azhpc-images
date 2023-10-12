@@ -37,7 +37,7 @@ popd
 # Install NVIDIA driver
 nvidia_driver_metadata=$(jq -r '.nvidia."'"$DISTRIBUTION"'".driver' <<< $COMPONENT_VERSIONS)
 nvidia_driver_version=$(jq -r '.version' <<< $nvidia_driver_metadata)
-dnf install -y cuda-$nvidia_driver_version
+tdnf install -y cuda-$nvidia_driver_version
 $COMMON_DIR/write_component_version.sh "nvidia" $nvidia_driver_version
 
 # cannot find -lcuda

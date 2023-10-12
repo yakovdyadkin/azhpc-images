@@ -5,7 +5,7 @@ set -ex
 # Ref: https://spack.readthedocs.io/en/latest/getting_started.html
 # dnf group install "Development Tools" -y
 # Group unavailable in so installing required individual packages
-dnf install -y build-essential \
+tdnf install -y build-essential \
     gcc-c++ \
     gdb \
 	git \
@@ -14,7 +14,7 @@ dnf install -y build-essential \
     lsb-release \
     patchutils  
 
-dnf install -y curl \
+tdnf install -y curl \
     findutils \
     gcc-gfortran \
     gnupg2 \
