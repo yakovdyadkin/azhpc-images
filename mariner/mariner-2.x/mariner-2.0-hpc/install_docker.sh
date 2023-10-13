@@ -14,10 +14,10 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 # curl -s -L https://nvidia.github.io/nvidia-container-runtime/experimental/$distribution/nvidia-container-runtime.list | tee /etc/yum.repos.d/nvidia-container-runtime.list
 
 # Install NVIDIA container toolkit
-tdnf install --nogpgcheck -y nvidia-container-toolkit
+tdnf install --noplugins -y nvidia-container-toolkit
 
 # Install NVIDIA container runtime
-tdnf install --nogpgcheck -y nvidia-container-runtime
+tdnf install --noplugins -y nvidia-container-runtime
 # Mark the installed packages on hold to disable updates
 sed -i "$ s/$/ *nvidia-container*/" /etc/dnf/dnf.conf
 
