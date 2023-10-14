@@ -50,7 +50,7 @@ spack gc -y
 ./install_docker.sh
 
 # Install DCGM
-# ./install_dcgm.sh
+./install_dcgm.sh
 
 # optimizations
 # ./hpc-tuning.sh

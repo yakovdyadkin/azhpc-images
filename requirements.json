@@ -217,8 +217,9 @@
             "distribution": "rhel8"
         },
         "mariner2.0": {
-            "version": "3.1.8",
-            "distribution": "rhel8"
+            "version": "3.2.6-1",
+            "distribution": "rhel9",
+            "sha256": "54595a9bc9698ab4243f88f9d4471f409013a07b2785e2b765ea96e602ae0cfb"
         }
     },
     "intel_one_mkl": {
