@@ -209,7 +209,7 @@ function verify_dcgm_installation {
     # Verify DCGM package installation
     case $ID in
         ubuntu) dpkg -l | grep datacenter-gpu-manager;;
-        centos | almalinux) dnf list installed | grep datacenter-gpu-manager;;
+        centos | almalinux | mariner) dnf list installed | grep datacenter-gpu-manager;;
         * ) ;;
     esac
     check_exit_code "DCGM Installed" "DCGM not installed!"
