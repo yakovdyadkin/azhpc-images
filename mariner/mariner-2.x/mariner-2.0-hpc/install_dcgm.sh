@@ -12,10 +12,6 @@ dcgm_download_url=https://developer.download.nvidia.com/compute/cuda/repos/$dcgm
 $COMMON_DIR/download_and_verify.sh $dcgm_download_url $dcgm_sha256
 dnf install -y ./datacenter-gpu-manager-$dcgm_version-x86_64.rpm
 
-# tdnf install won't work with a repo for a different distribution. Says "No valid Platform ID detected"
-# curl -s -L https://developer.download.nvidia.com/compute/cuda/repos/$dcgm_distribution/x86_64/cuda-$dcgm_distribution.repo | tee /etc/yum.repos.d/cuda-$dcgm_distribution.repo
-# tdnf clean expire-cache
-# tdnf install -y datacenter-gpu-manager-1:$dcgm_version
 $COMMON_DIR/write_component_version.sh "dcgm" $dcgm_version
 
 # Enable the dcgm service
@@ -31,4 +27,4 @@ then
 fi
 
 # Clean repos
-rm -rf /etc/yum.repos.d/cuda-*
+rm -rf datacenter-gpu-manager*.rpm
