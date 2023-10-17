@@ -29,7 +29,7 @@ export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 tdnf -y install rdma-core-devel
 
 # install mpi libraries
-./install_mpis.sh
+# ./install_mpis.sh
 
 # install nvidia gpu driver
 ./install_nvidiagpudriver.sh
