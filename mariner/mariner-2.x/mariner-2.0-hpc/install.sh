@@ -25,8 +25,11 @@ export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 # install mellanox ofed
 #./install_mellanoxofed.sh
 
+# temporarily install rdma-core-devel
+tdnf -y install rdma-core-devel
+
 # install mpi libraries
-# ./install_mpis.sh
+./install_mpis.sh
 
 # install nvidia gpu driver
 ./install_nvidiagpudriver.sh
@@ -41,8 +44,6 @@ rm -Rf -- */
 $COMMON_DIR/install_intel_libs.sh
 
 # Install NCCL
-# temporoarily install infiniband-diags
-tdnf -y install infiniband-diags
 $MARINER_COMMON_DIR/install_nccl.sh
 
 spack clean -a
