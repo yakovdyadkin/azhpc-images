@@ -41,7 +41,9 @@ rm -Rf -- */
 $COMMON_DIR/install_intel_libs.sh
 
 # Install NCCL
-# $MARINER_COMMON_DIR/install_nccl.sh
+# temporoarily install infiniband-diags
+tdnf -y install infiniband-diags
+$MARINER_COMMON_DIR/install_nccl.sh
 
 spack clean -a
 spack gc -y
