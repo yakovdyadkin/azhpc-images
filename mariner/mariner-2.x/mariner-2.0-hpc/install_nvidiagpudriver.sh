@@ -43,6 +43,7 @@ $COMMON_DIR/write_component_version.sh "nvidia" $nvidia_driver_version
 # cannot find -lcuda
 # tried adding /usr/lib64 to LD_LIBRARY_PATH
 # tried adding /usr/lib64 to ld.so.conf and running ldconfig
+# libcuda is in /usr/lib
 # Install gdrcopy
 # gdrcopy_version=$(jq -r '.gdrcopy."'"$DISTRIBUTION"'".version' <<< $COMPONENT_VERSIONS)
 # spack add gdrcopy@$gdrcopy_version
