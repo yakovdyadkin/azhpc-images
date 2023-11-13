@@ -23,13 +23,13 @@ export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 # $MARINER_COMMON_DIR/install_lustre_client.sh "8"
 
 # install mellanox ofed
-#./install_mellanoxofed.sh
+./install_mellanoxofed.sh
 
 # temporarily install rdma-core-devel
 # tdnf -y install rdma-core-devel
 
 # install mpi libraries
-# ./install_mpis.sh
+./install_mpis.sh
 
 # install nvidia gpu driver
 ./install_nvidiagpudriver.sh
