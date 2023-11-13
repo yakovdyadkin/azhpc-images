@@ -52,6 +52,20 @@ tdnf install -y python3-devel \
     pam-devel \
     ed \
     pciutils
+
+# Packages for MOFED
+tdnf install -y iptables-devel \
+    libdb-devel \
+    libmnl-devel \
+    libgudev \
+    fuse-devel \
+    libgudev-devel \
+    pciutils-devel \
+    libusb \
+    openssl-devel \
+    libusb-devel \
+    flex \
+    lsof
     
 ## Disable kernel updates
 echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf

@@ -59,8 +59,8 @@
             "sha256": "7cd5bf25ec6b0fa3aa7979ab7856f400e708172b73eaa452da70c76d6ffe5147"
         },
         "mariner2.0": {
-            "version": "23.07-0.5.0.0",
-            "sha256": "dc781997d7e02b6e9be1885283aa4302b0064a3aa237af2092cb6f98a99422a7"
+            "version": "23.10-0.4.9.0",
+            "sha256": "55365ce798576fe145a2f6cef52f761a384011a4fe0f4b5233cbebbeadc5d738"
         }
     },
     "hpcx": {
