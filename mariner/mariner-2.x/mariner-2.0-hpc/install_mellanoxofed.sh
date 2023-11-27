@@ -10,6 +10,8 @@ mofed_download_url=https://azhpcstor.blob.core.windows.net/azhpc-images-store/${
 mofed_folder=$(basename $mofed_download_url .tgz)
 kernel_without_arch="${KERNEL%.*}"
 
+source /etc/profile
+
 $COMMON_DIR/download_and_verify.sh $mofed_download_url $mofed_sha256
 tar zxvf $tarball
 
