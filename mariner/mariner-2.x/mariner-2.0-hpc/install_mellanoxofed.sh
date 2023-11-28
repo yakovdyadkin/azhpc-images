@@ -1,8 +1,6 @@
 #!/bin/bash
 set -ex
 
-source /etc/bashrc
-
 mofed_metadata=$(jq -r '.mofed."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
 mofed_version=$(jq -r '.version' <<< $mofed_metadata)
 mofed_sha256=$(jq -r '.sha256' <<< $mofed_metadata)
