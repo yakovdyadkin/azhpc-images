@@ -13,7 +13,7 @@ kernel_without_arch="${KERNEL%.*}"
 $COMMON_DIR/download_and_verify.sh $mofed_download_url $mofed_sha256
 tar zxvf $tarball
 
-./$mofed_folder/install.pl --kernel $kernel_without_arch --kernel-sources /usr/src/linux-headers-$kernel_without_arch --all --without-openmpi --builddir /opt
+./$mofed_folder/install.pl --kernel $kernel_without_arch --kernel-sources /usr/src/linux-headers-$kernel_without_arch --user-space-only --without-openmpi --builddir /opt
 $COMMON_DIR/write_component_version.sh "mofed" $mofed_version
 
 # Updating initramfs
