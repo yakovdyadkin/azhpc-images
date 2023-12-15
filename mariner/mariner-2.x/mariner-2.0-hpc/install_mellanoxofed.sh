@@ -6,7 +6,6 @@ mofed_version=$(jq -r '.version' <<< $mofed_metadata)
 mofed_sha256=$(jq -r '.sha256' <<< $mofed_metadata)
 tarball="MLNX_OFED_SRC-$mofed_version.tgz"
 mofed_download_url=https://www.mellanox.com/downloads/ofed/MLNX_OFED-$mofed_version/$tarball
-#mofed_download_url=https://azhpcstor.blob.core.windows.net/azhpc-images-store/${tarball}
 mofed_folder=$(basename $mofed_download_url .tgz)
 kernel_without_arch="${KERNEL%.*}"
 
@@ -15,9 +14,6 @@ tar zxvf $tarball
 
 ./$mofed_folder/install.pl --all --without-openmpi --without-mlnx-ofa_kernel-modules
 $COMMON_DIR/write_component_version.sh "mofed" $mofed_version
-
-# Updating initramfs
-dracut -f
 
 # Restarting openibd
 /etc/init.d/openibd restart
