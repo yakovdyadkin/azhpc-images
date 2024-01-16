@@ -4,11 +4,7 @@ set -ex
 # Find distro
 find_distro() {
     local os=`cat /etc/os-release | awk 'match($0, /^NAME="(.*)"/, result) { print result[1] }'`
-    if [[ $os == "CentOS Linux" ]]
-    then
-        local centos_distro=`find_centos_distro`
-        echo "${os} ${centos_distro}"
-    elif [[ $os == "AlmaLinux" ]]
+    if [[ $os == "AlmaLinux" ]]
     then
         local alma_distro=`find_alma_distro`
         echo "${os} ${alma_distro}"
@@ -24,11 +20,6 @@ find_distro() {
         echo "*** Error - invalid distro!"
         exit -1
     fi
-}
-
-# Find CentOS distro
-find_centos_distro() {
-    echo `cat /etc/redhat-release | awk '{print $4}'`
 }
 
 # Find Alma distro
@@ -49,7 +40,7 @@ find_ubuntu_distro() {
 distro=`find_distro`
 echo "Detected distro: ${distro}"
 
-if [[ $distro == *"CentOS Linux"* ]] || [[ $distro == *"AlmaLinux"* ]] || [[ $distro == *"Mariner"* ]]
+if [[ $distro == *"AlmaLinux"* ]] || [[ $distro == *"Mariner"* ]]
 then
     # Sync yum and rpmdb after installing rpm's outside yum
     yum history sync
