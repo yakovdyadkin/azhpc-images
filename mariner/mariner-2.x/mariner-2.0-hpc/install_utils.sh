@@ -68,11 +68,11 @@ tdnf install -y iptables-devel \
     lsof
     
 ## Disable kernel updates
-echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
+#echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
 
 # Disable dependencies on kernel core
-sed -i "$ s/$/ shim*/" /etc/dnf/dnf.conf
-sed -i "$ s/$/ grub2*/" /etc/dnf/dnf.conf
+#sed -i "$ s/$/ shim*/" /etc/dnf/dnf.conf
+#sed -i "$ s/$/ grub2*/" /etc/dnf/dnf.conf
 
 ## Install dkms from the EPEL repository
 wget -r --no-parent -A "dkms-*.el8.noarch.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/d/
