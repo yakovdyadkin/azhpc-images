@@ -26,7 +26,6 @@ export PATH="/sbin:/bin:/usr/sbin:/usr/bin:$PATH"
 # $MARINER_COMMON_DIR/install_lustre_client.sh "8"
 
 # install mellanox ofed
-exit 0
 ./install_mellanoxofed.sh
 
 # temporarily install rdma-core-devel
