@@ -69,7 +69,7 @@ tdnf install -y iptables-devel \
 
 
 # TEMP
-tdnf yum -y install bison automake autoconf    
+tdnf install -y bison automake autoconf    
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
