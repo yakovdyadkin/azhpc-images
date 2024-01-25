@@ -66,6 +66,10 @@ tdnf install -y iptables-devel \
     libusb-devel \
     flex \
     lsof
+
+
+# TEMP
+tdnf yum -y install bison automake autoconf    
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
