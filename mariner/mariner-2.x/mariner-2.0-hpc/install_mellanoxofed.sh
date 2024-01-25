@@ -12,8 +12,6 @@ kernel_without_arch="${KERNEL%.*}"
 $COMMON_DIR/download_and_verify.sh $mofed_download_url $mofed_sha256
 tar zxvf $tarball
 
-source /etc/profile
-
 pushd $mofed_folder
 ./install.pl --all --without-openmpi --without-mlnx-ofa_kernel-modules
 popd
