@@ -69,7 +69,7 @@ tdnf install -y iptables-devel \
 
 
 # TEMP
-tdnf install -y bison automake autoconf    
+#tdnf install -y bison automake autoconf    
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
@@ -91,7 +91,7 @@ tdnf install -y bison automake autoconf
 #rm -rf ./dl.fedoraproject.org/
 
 # Install common dependencies
-#$COMMON_DIR/install_utils.sh
+$COMMON_DIR/install_utils.sh
 
 # copy kvp client file
 #$COMMON_DIR/copy_kvp_client.sh
