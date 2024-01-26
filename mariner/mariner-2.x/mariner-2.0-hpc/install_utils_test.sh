@@ -65,11 +65,13 @@ tdnf install -y iptables-devel \
     openssl-devel \
     libusb-devel \
     flex \
-    lsof
+    lsof \
+    automake \
+    autoconf
 
 
 # TEMP
-#tdnf install -y bison automake autoconf    
+#tdnf install -y bison   
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
