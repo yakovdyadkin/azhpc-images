@@ -93,7 +93,7 @@ tdnf install -y bison
 #rm -rf ./dl.fedoraproject.org/
 
 # Install common dependencies
-$COMMON_DIR/install_utils.sh
+$COMMON_DIR/install_utils_test.sh
 
 # copy kvp client file
 #$COMMON_DIR/copy_kvp_client.sh
