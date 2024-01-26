@@ -2,11 +2,12 @@
 set -ex
 
 # Install common dependencies
-spack add cmake 
-    # numactl \
+spack add cmake \
+     numactl \
+     tcl \
+     slurm
+
     # bison \
-    # tcl \
-    # slurm
 
 spack install
 
