@@ -71,7 +71,7 @@ tdnf install -y iptables-devel \
 
 
 # TEMP
-#tdnf install -y bison   
+tdnf install -y bison   
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
