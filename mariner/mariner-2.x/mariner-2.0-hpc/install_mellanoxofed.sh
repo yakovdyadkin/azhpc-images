@@ -1,6 +1,26 @@
 #!/bin/bash
 set -ex
 
+# Packages for MOFED
+tdnf install -y iptables-devel \
+    libdb-devel \
+    libmnl-devel \
+    libgudev \
+    fuse-devel \
+    libgudev-devel \
+    pciutils-devel \
+    libusb \
+    openssl-devel \
+    libusb-devel \
+    flex \
+    lsof \
+    automake \
+    autoconf
+
+
+# TEMP
+tdnf install -y bison  
+
 mofed_metadata=$(jq -r '.mofed."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
 mofed_version=$(jq -r '.version' <<< $mofed_metadata)
 mofed_sha256=$(jq -r '.sha256' <<< $mofed_metadata)
