@@ -47,9 +47,9 @@ tdnf install -y python3-devel \
     binutils-devel \
     munge \
     numactl-devel \
-    environment-modules
+    environment-modules \
+    pam-devel 
     # cmake \
-    # pam-devel \
     # ed \
     # pciutils
     
