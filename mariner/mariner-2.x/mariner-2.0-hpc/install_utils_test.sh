@@ -42,16 +42,16 @@ tdnf install -y python3-devel \
     libnl3-devel \
     rpm-build \
     make \
-    cmake \
     mariner-rpm-macros \
     tk \
     binutils-devel \
     munge \
     numactl-devel \
-    environment-modules \
-    pam-devel \
-    ed \
-    pciutils
+    environment-modules
+    # cmake \
+    # pam-devel \
+    # ed \
+    # pciutils
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
