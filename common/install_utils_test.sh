@@ -5,9 +5,8 @@ set -ex
 spack add cmake \
      numactl \
      tcl \
-     slurm
-
-    # bison \
+     slurm \
+     bison 
 
 spack install
 
