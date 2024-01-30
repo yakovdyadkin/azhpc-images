@@ -52,22 +52,6 @@ tdnf install -y python3-devel \
     # cmake \
     # ed \
     # pciutils
-
-# Packages for MOFED
-tdnf install -y iptables-devel \
-    libdb-devel \
-    libmnl-devel \
-    libgudev \
-    fuse-devel \
-    libgudev-devel \
-    pciutils-devel \
-    libusb \
-    openssl-devel \
-    libusb-devel \
-    flex \
-    lsof \
-    automake \
-    autoconf
     
 ## Disable kernel updates
 #echo "exclude=kernel* kmod*" | tee -a /etc/dnf/dnf.conf
@@ -89,7 +73,7 @@ dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages
 rm -rf ./dl.fedoraproject.org/
 
 # Install common dependencies
-$COMMON_DIR/install_utils_test.sh
+#$COMMON_DIR/install_utils_test.sh
 
 # copy kvp client file
 $COMMON_DIR/copy_kvp_client.sh

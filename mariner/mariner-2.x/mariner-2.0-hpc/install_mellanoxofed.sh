@@ -2,20 +2,20 @@
 set -ex
 
 # Packages for MOFED
-# tdnf install -y iptables-devel \
-#     libdb-devel \
-#     libmnl-devel \
-#     libgudev \
-#     fuse-devel \
-#     libgudev-devel \
-#     pciutils-devel \
-#     libusb \
-#     openssl-devel \
-#     libusb-devel \
-#     flex \
-#     lsof \
-#     automake \
-#     autoconf
+tdnf install -y iptables-devel \
+    libdb-devel \
+    libmnl-devel \
+    libgudev \
+    fuse-devel \
+    libgudev-devel \
+    pciutils-devel \
+    libusb \
+    openssl-devel \
+    libusb-devel \
+    flex \
+    lsof \
+    automake \
+    autoconf
 
 
 # TEMP
