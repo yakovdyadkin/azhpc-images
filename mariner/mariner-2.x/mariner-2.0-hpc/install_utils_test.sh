@@ -73,7 +73,7 @@ dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages
 rm -rf ./dl.fedoraproject.org/
 
 # Install common dependencies
-#$COMMON_DIR/install_utils_test.sh
+$COMMON_DIR/install_utils_test.sh
 
 # copy kvp client file
 $COMMON_DIR/copy_kvp_client.sh

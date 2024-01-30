@@ -19,8 +19,7 @@ tdnf install -y iptables-devel \
 
 
 # TEMP
-tdnf install -y bison \
-    cmake
+tdnf install -y bison 
 
 mofed_metadata=$(jq -r '.mofed."'"$DISTRIBUTION"'"' <<< $COMPONENT_VERSIONS)
 mofed_version=$(jq -r '.version' <<< $mofed_metadata)
