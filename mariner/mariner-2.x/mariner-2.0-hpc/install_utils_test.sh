@@ -61,21 +61,21 @@ tdnf install -y python3-devel \
 #sed -i "$ s/$/ grub2*/" /etc/dnf/dnf.conf
 
 ## Install dkms from the EPEL repository
-#wget -r --no-parent -A "dkms-*.el8.noarch.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/d/
-#dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/d/dkms-*.el8.noarch.rpm
+wget -r --no-parent -A "dkms-*.el8.noarch.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/d/
+dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/d/dkms-*.el8.noarch.rpm
 
 ## Install subunit and subunit-devel from EPEL repository
-#wget -r --no-parent -A "subunit-*.el8.x86_64.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/
-#dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-[0-9].*.el8.x86_64.rpm
-#dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-devel-[0-9].*.el8.x86_64.rpm
+wget -r --no-parent -A "subunit-*.el8.x86_64.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/
+dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-[0-9].*.el8.x86_64.rpm
+dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-devel-[0-9].*.el8.x86_64.rpm
 
 # Remove rpm files
-#rm -rf ./dl.fedoraproject.org/
+rm -rf ./dl.fedoraproject.org/
 
 # Install common dependencies
 $COMMON_DIR/install_utils_test.sh
 
 # copy kvp client file
-#$COMMON_DIR/copy_kvp_client.sh
+$COMMON_DIR/copy_kvp_client.sh
 
 rm -rf ./packages.microsoft.com/
