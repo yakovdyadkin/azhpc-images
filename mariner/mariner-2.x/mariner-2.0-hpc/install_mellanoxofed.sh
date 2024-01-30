@@ -15,7 +15,8 @@ tdnf install -y iptables-devel \
     flex \
     lsof \
     automake \
-    autoconf
+    autoconf \
+    pciutils
 
 
 # TEMP
