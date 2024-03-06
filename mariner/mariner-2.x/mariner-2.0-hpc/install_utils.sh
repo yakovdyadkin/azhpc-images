@@ -69,9 +69,10 @@ wget -r --no-parent -A "subunit-*.el8.x86_64.rpm" https://dl.fedoraproject.org/p
 dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-[0-9].*.el8.x86_64.rpm
 dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/s/subunit-devel-[0-9].*.el8.x86_64.rpm
 
-## Install libmd from EPEL repository
+## Install libmd and libmd-devel from EPEL repository
 wget -r --no-parent -A "libmd-*.el8.x86_64.rpm" https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/l/
 dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/l/libmd-[0-9].*.el8.x86_64.rpm
+dnf localinstall -y ./dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/l/libmd-devel-[0-9].*.el8.x86_64.rpm
 
 # Remove rpm files
 rm -rf ./dl.fedoraproject.org/
