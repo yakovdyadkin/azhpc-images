@@ -18,7 +18,9 @@ if [ ! -e /bin/cmake ]
 then
     ln -s $cmake_home/bin/cmake /bin/cmake
 fi
-ln -s $numactl_home/bin/numactl /bin/numactl
+
+# TODO: breaks mariner install
+# ln -s $numactl_home/bin/numactl /bin/numactl
 
 # Install azcopy tool
 # To copy blobs or files to or from a storage account
