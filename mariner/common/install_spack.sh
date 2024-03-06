@@ -5,24 +5,24 @@ set -ex
 # Ref: https://spack.readthedocs.io/en/latest/getting_started.html
 # dnf group install "Development Tools" -y
 # Group unavailable in so installing required individual packages
-# tdnf install -y build-essential \
-#     gcc-c++ \
-#     gdb \
-# 	git \
-#     glibc-devel \
-#     lmdb-devel \
-#     lsb-release \
-#     patchutils  
+tdnf install -y build-essential \
+    gcc-c++ \
+    gdb \
+    git \
+    glibc-devel \
+    lmdb-devel \
+    lsb-release \
+    patchutils  
 
-# tdnf install -y curl \
-#     findutils \
-#     gcc-gfortran \
-#     gnupg2 \
-#     iproute \
-#     python3 \
-#     python3-pip \
-#     python3-setuptools \
-#     unzip
+tdnf install -y curl \
+     findutils \
+     gcc-gfortran \
+     gnupg2 \
+     iproute \
+     python3 \
+     python3-pip \
+     python3-setuptools \
+     unzip
 # dnf --enablerepo=ha install -y python3-boto3
 
 ## Environment setup for Component installations using Spack
