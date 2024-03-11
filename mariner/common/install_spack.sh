@@ -9,21 +9,16 @@ tdnf install -y build-essential \
     gcc-c++ \
     gdb \
     git \
-    glibc-devel \
     lmdb-devel \
-    lsb-release \
     patchutils  
 
 tdnf install -y curl \
-     findutils \
-     gcc-gfortran \
-     gnupg2 \
-     iproute \
-     python3 \
-     python3-pip \
-     python3-setuptools \
-     unzip
-# dnf --enablerepo=ha install -y python3-boto3
+    findutils \
+    gcc-gfortran \
+    gnupg2 \
+    iproute \
+    python3-pip \
+    unzip
 
 ## Environment setup for Component installations using Spack
 # Create a directory to setup an environment
