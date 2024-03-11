@@ -6,7 +6,6 @@ set -ex
 # dnf group install "Development Tools" -y
 # Group unavailable in so installing required individual packages
 tdnf install -y build-essential \
-    gcc-c++ \
     gdb \
     git \
     lmdb-devel \
