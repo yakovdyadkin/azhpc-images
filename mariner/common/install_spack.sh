@@ -11,11 +11,7 @@ tdnf install -y build-essential \
     lmdb-devel \
     patchutils  
 
-tdnf install -y curl \
-    findutils \
-    gcc-gfortran \
-    gnupg2 \
-    iproute \
+tdnf install -y gcc-gfortran \
     python3-pip \
     unzip
 
