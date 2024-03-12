@@ -9,9 +9,11 @@ source ./set_properties.sh
 
 # install spack
 $MARINER_COMMON_DIR/install_spack.sh
+echo $?
 # Activate the environment/ container
 source /etc/profile
 export PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
+echo $?
 
 # install compilers
 # ./install_gcc.sh
