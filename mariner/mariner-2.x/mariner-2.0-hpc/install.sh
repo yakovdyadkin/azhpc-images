@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 # install pre-requisites
 ./install_prerequisites.sh
@@ -12,8 +12,12 @@ $MARINER_COMMON_DIR/install_spack.sh
 echo $?
 # Activate the environment/ container
 source /etc/profile
+echo $?
 export PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
 echo $?
+
+# TODP: remove debug exit
+exit
 
 # install compilers
 # ./install_gcc.sh
