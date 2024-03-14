@@ -9,15 +9,12 @@ source ./set_properties.sh
 
 # install spack
 $MARINER_COMMON_DIR/install_spack.sh
-echo "##[debug]$0: rc $?"
+echo "##[debug]$(realpath $0): rc $?"
 # Activate the environment/ container
 source /etc/profile
-echo "##[debug]$0: rc $?"
+echo "##[debug]$(realpath $0): rc $?"
 export PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
-echo "##[debug]$0: rc $?"
-
-# TODP: remove debug exit
-exit
+echo "##[debug]$(realpath $0): rc $?"
 
 # install compilers
 # ./install_gcc.sh
