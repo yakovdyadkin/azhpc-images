@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 ## Environment setup for Component installations using Spack
 # Create a directory to setup an environment
