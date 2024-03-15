@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -ex
 
 # install pre-requisites
 ./install_prerequisites.sh
