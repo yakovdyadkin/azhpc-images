@@ -11,7 +11,7 @@ source ./set_properties.sh
 $MARINER_COMMON_DIR/install_spack.sh
 echo "##[debug]$(realpath $0): rc $?"
 # Activate the environment/ container
-source /etc/profile
+source /etc/bashrc
 echo "##[debug]$(realpath $0): rc $?"
 export PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
 echo "##[debug]$(realpath $0): rc $?"
